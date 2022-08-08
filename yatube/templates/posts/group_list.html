@@ -1,0 +1,36 @@
+<!--Файл расширен от base-->
+{% extends 'base.html '%}
+{% block title %}Записи сообщества {{ group }} {% endblock %}
+{% block content %}
+<!-- класс py-5 создает отступы сверху и снизу блока -->
+<div class="container py-5">
+  <p>
+    Группа <B>"{{ group }}"</B>:
+    <br>
+    Здесь будет информация о группе {{ group }}.
+    <br>
+  </p>
+  Сообщения группы:
+  <br>
+    {% for post in posts %}
+      <article>
+        <ul>
+          <br>
+          <li>
+            Автор: {{ post.author.get_full_name }}
+          </li>
+          <li>
+            Дата публикации: {{ post.pub_date|date:"d E Y" }}
+          </li>
+        </ul>
+        <p>
+          {{ post.text }}
+        </p> 
+        <hr>
+      </article>
+    {% endfor %}
+  <a class="navbar-brand" href="{% url 'posts:index' %}">
+    Вернуться на главную
+  </a>
+</div>
+{% endblock %}
