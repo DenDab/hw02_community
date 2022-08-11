@@ -11,10 +11,6 @@ class Group(models.Model):
     slug = models.SlugField(unique=True)  # адрес
     description = models.TextField()
 
-    def __str__(self):
-        '''Метод для вывода поля title при печати объекта модели Group.'''
-        return '%s' % (self.title)
-
 
 class Post(models.Model):
     """Класс для хранения таблицы сообщений."""
@@ -34,7 +30,3 @@ class Post(models.Model):
         null=True,
         related_name='posts'
     )
-
-    def __str__(self):
-        """Метод для вывода поля text при печати объекта модели Post."""
-        return self.text
