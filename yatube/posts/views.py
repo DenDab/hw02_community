@@ -2,11 +2,14 @@ from django.shortcuts import render, get_object_or_404
 from .models import Post, Group
 
 
+x=10
+
+
 def index(request):
     """Открытие главной страницы."""
     template = 'posts/index.html'
     # Коллекция постов, отсортированных по дате, ограниченны 10 шт.
-    posts = Post.objects.order_by('-pub_date')[:10]
+    posts = Post.objects.order_by('-pub_date')[:x]
     context = {
         'posts': posts
     }
@@ -21,7 +24,7 @@ def group_posts(request, slug):
     group = get_object_or_404(Group, slug=slug)
     # Коллекция постов отфильтрованных по группе, отсортированных по
     # дате, ограниченны 10 шт.
-    posts = Post.objects.filter(group=group).order_by('-pub_date')[:10]
+    posts = Post.objects.filter(group=group).order_by('-pub_date')[:x]
     # Текст для основного блока
     context = {
         'group': group,
