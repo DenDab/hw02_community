@@ -3,8 +3,6 @@ from .models import Post, Group
 
 
 x=10
-
-
 def index(request):
     """Открытие главной страницы."""
     template = 'posts/index.html'
